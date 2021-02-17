@@ -1,9 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin id="cordova.outsystems.timezonewatcher" version="1.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>TimezoneWatcher</name>
+    
     <js-module name="TimezoneWatcher" src="www/TimezoneWatcher.js">
         <clobbers target="cordova.plugins.TimezoneWatcher" />
     </js-module>
+
     <platform name="ios">
         <dependency id="com.chuckytuh.cordova.rsswizzle" url="https://github.com/Chuckytuh/cordova-plugin-rsswizle" />
         <config-file parent="UIBackgroundModes" target="*-Info.plist">
@@ -17,11 +19,14 @@
                 <param name="ios-package" value="TimezoneWatcher" />
             </feature>
         </config-file>
+
         <framework src="UserNotifications.framework" weak="true" />
         <framework src="CoreLocation.framework" weak="true" />
+
         <header-file src="src/ios/TimezoneWatcher.h" />
         <source-file src="src/ios/TimezoneWatcher.m" />
     </platform>
+
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="TimezoneWatcher">
@@ -29,6 +34,7 @@
                 <param name="android-package" value="cordova.outsystems.timezonewatcher.TimezoneWatcher" />
             </feature>
         </config-file>
+
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <receiver android:name="cordova.outsystems.timezonewatcher.TWBroadcastReceiver" android:enabled="true">
                 <intent-filter>
@@ -36,8 +42,10 @@
                 </intent-filter>
             </receiver>
         </config-file>
+        
         <source-file src="src/android/TimezoneWatcher.java" target-dir="src/cordova/outsystems/timezonewatcher" />
         <source-file src="src/android/TWBroadcastReceiver.java" target-dir="src/cordova/outsystems/timezonewatcher" />
+        
         <framework src="src/android/timezonewatcher.gradle" custom="true" type="gradleReference" />
     </platform>
 </plugin>
